@@ -1,4 +1,9 @@
 import express from "express";
+import morgan from "morgan";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import cors from "cors";
+import "dotenv/config";
 
 const app = express();
 
@@ -8,8 +13,16 @@ import authRoutes from "./routes/auth.js";
 //middleware
 app.use("/api", authRoutes);
 
-const port = process.env.port || 8000;
+// app middlewares
+app.use(morgan("dev"));
+app.use(bodyParser.json());
+//app.use(cors());//alows req from all origins or specific domain
+if ((process.env.NODE_ENV = "development")) {
+  app.use(cors({ orgin: `http://localhost3000` }));
+}
 
-app.listen(port, () => {
-  console.log(`API is running on port ${port}`);
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`API is running on port ${PORT}`);
 });
