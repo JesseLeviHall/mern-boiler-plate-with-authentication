@@ -1,7 +1,7 @@
 import express from "express";
 import { signup } from "../contollers/auth.js";
-import { userSignupValidator } from "../validators/auth.js";
-import { runValidation } from "../validators/index.js";
+import userSignupValidator from "../validators/auth.js";
+import runValidation from "../validators/index.js";
 
 const router = express.Router();
 
