@@ -23,6 +23,11 @@ if ((process.env.NODE_ENV = "development")) {
 
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, () => {
-  console.log(`API is running on port ${PORT}`);
-});
+mongoose
+  .connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.log("DB ERROR => ", err));
