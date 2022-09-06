@@ -27,3 +27,4 @@ export const signup = (req, res) => {
 */
 
 export const signup = (req, res) => {};
+//create an object for new user and post to sign up endpoint
